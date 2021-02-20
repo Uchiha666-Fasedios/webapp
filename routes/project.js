@@ -1,5 +1,5 @@
 'use strict'
-const path = require('path');
+
 var express = require('express'); //trabajar con express para poder crear las rutas 
 var ProjectController = require('../controllers/project'); //cargo el cotrolador
 
