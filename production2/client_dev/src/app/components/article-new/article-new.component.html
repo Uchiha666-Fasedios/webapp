@@ -1,0 +1,73 @@
+<div class="center">
+    <section id="content">
+        <h1 class="subheader">Crear articulo</h1>
+
+
+        <form class="mid-form" #articleform="ngForm" (ngSubmit)="onSubmit(articleform)">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" #title="ngModel" [(ngModel)]="article.title" required />
+
+
+                <small *ngIf="!title.valid && title.touched">
+		El titulo no es valido
+	</small>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="content">Contenido</label>
+                <textarea name="content" #content="ngModel" [(ngModel)]="article.content" required pattern="[a-zA-Z ]+"></textarea>
+
+                <small *ngIf="!content.valid && content.touched">
+		El contenido no es valido
+	</small>
+            </div>
+
+
+
+
+
+            <label for="image">Imagen del articulo</label>
+            <!--*ngIf="project.image" si existe la imagen la mostramos esto es mas q nada cuando entramos a editar q pasa por esta vista-->
+
+            <div class="image-thumb">
+
+
+                <img src="{{url + 'get-image/' + article.image}}" alt="{{article.title}}" *ngIf="article.image" />
+                <img src="assets/images/default.jpg" alt="{{article.title}}" *ngIf="!article.image" />
+
+
+            </div>
+
+            <div class="custom-file">
+
+                <input type="file" class="custom-file-input" id="customFileLang" lang="es" name="image" placeholder="Subir imagen" (change)="fileChangeEvent($event)" />
+                <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+
+
+            </div>
+
+
+
+
+            <br><br>
+            <div class="clearfix"></div>
+            <!--[disabled]="userform.invalid" q el boton este desabilitado cuando el formulario esta invalid-->
+            <input type="submit" value="Guardar" class="btn btn-success" [disabled]="articleform.invalid" />
+
+        </form>
+
+
+
+
+
+
+    </section>
+
+
+    <app-siderbar></app-siderbar>
+
+
+</div>

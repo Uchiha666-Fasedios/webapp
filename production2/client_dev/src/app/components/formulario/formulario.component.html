@@ -1,0 +1,72 @@
+<app-slider
+[nombre]="'Formulario'"
+[size]="'small'">
+</app-slider>
+
+
+<div class="center">
+    <section id="content">
+<h1 class="subheader">{{title}}</h1>
+{{user.nombre}}
+{{user.apellidos}}
+{{user.bio}}
+{{user.genero}}
+
+  <form class="mid-form" #userform="ngForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" required pattern="[a-zA-Z]+"/>
+
+
+                                               <small *ngIf="nombre.touched && !nombre.valid">
+		El nombre es obligatorio
+	</small>          
+                        </div>
+         
+      
+
+                        <div class="form-group">
+                            <label for="apellidos">Apellidos</label>
+                            <input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="user.apellidos" required pattern="[a-zA-Z]+"/>
+                        <small *ngIf="apellidos.touched && !apellidos.valid">
+		Los apellidos son obligatorios
+	</small>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="bio">Biografia</label>
+                            <textarea name="bio" #bio="ngModel" [(ngModel)]="user.bio" required pattern="[a-zA-Z]+"></textarea>
+                        
+                        <small *ngIf="bio.touched && !bio.valid">
+		Los apellidos son obligatorios
+	</small>
+                        </div>
+
+                        <div class="form-group radibuttons">
+                            <input type="radio" name="genero" value="hombre" #genero="ngModel" [(ngModel)]="user.genero" /> Hombre 
+                            <input type="radio" name="genero" value="mujer" #genero="ngModel" [(ngModel)]="user.genero"/> Mujer 
+                            <input type="radio" name="genero" value="otro" #genero="ngModel" [(ngModel)]="user.genero"/> Otro
+                       <small *ngIf="genero.touched && !genero.valid">
+		Los apellidos son obligatorios
+	</small>
+                        </div>
+
+                        <div class="clearfix"></div>
+<!--[disabled]="userform.invalid" q el boton este desabilitado cuando el formulario esta invalid-->
+                        <input type="submit" value="Enviar" [disabled]="userform.invalid" class="btn btn-success" />
+
+                   </form>
+
+
+
+
+
+
+ </section>
+
+
+    <app-siderbar></app-siderbar>
+
+
+</div>
